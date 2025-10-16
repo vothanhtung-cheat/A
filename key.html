@@ -1,10 +1,80 @@
 <!DOCTYPE html>
-<html><body>
-<script>
-  window.KEY_DATA = {
-    key: "ABC123",
-    expire: 1750200000000
-  };
-</script>
-<p>Key tạo lúc: 14/10/2025, 10:00:00</p>
-</body></html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thông tin Key</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      padding: 30px;
+      text-align: center;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: inline-block;
+      padding: 20px 30px;
+    }
+    h2 {
+      color: #0077ff;
+    }
+    p {
+      font-size: 16px;
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>🔑 Key hiện tại</h2>
+    <p><b>Key:</b> <span id="showKey">...</span></p>
+    <p><b>Thời gian hết hạn:</b> <span id="showExpire">...</span></p>
+    <p><b>Được tạo lúc:</b> <span id="showCreated">...</span></p>
+  </div>
+
+  <script>
+    window.KEY_DATA = {
+      key: "TungApi",
+      expire: 1760623800000,
+      created: 1760623236865
+    };
+
+    const data = window.KEY_DATA;
+    document.getElementById("showKey").innerText = data.key;
+
+    function formatTime(ms) {
+      const d = new Date(ms);
+      return d.toLocaleString("vi-VN", { hour12: false });
+    }
+
+    document.getElementById("showExpire").innerText = formatTime(data.expire);
+    document.getElementById("showCreated").innerText = formatTime(data.created);
+  </script>
+</body>
+</html>
+  <script>
+    // 📦 Dữ liệu key và hạn dùng
+    window.KEY_DATA = {
+      key: "ABC123",
+      expire: 1750200000000, // timestamp (milliseconds)
+      created: 1739500000000 // timestamp lúc tạo (tuỳ bạn muốn hiển thị)
+    };
+
+    // 🕒 Hiển thị ra giao diện
+    const data = window.KEY_DATA;
+    document.getElementById("showKey").innerText = data.key;
+
+    // Đổi timestamp sang dạng ngày giờ đọc được
+    function formatTime(ms) {
+      const d = new Date(ms);
+      return d.toLocaleString("vi-VN", { hour12: false });
+    }
+
+    document.getElementById("showExpire").innerText = formatTime(data.expire);
+    document.getElementById("showCreated").innerText = formatTime(data.created);
+  </script>
+</body>
+    </html>
