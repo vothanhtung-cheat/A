@@ -36,6 +36,26 @@
   </div>
 
   <script>
+    window.KEY_DATA = {
+      key: "TungApi",
+      expire: 1760623800000,
+      created: 1760623236865
+    };
+
+    const data = window.KEY_DATA;
+    document.getElementById("showKey").innerText = data.key;
+
+    function formatTime(ms) {
+      const d = new Date(ms);
+      return d.toLocaleString("vi-VN", { hour12: false });
+    }
+
+    document.getElementById("showExpire").innerText = formatTime(data.expire);
+    document.getElementById("showCreated").innerText = formatTime(data.created);
+  </script>
+</body>
+</html>
+  <script>
     // 📦 Dữ liệu key và hạn dùng
     window.KEY_DATA = {
       key: "ABC123",
