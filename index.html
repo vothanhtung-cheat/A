@@ -3,57 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Thông tin Key</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f9f9f9;
-      color: #333;
-      padding: 30px;
-      text-align: center;
-    }
-    .card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      display: inline-block;
-      padding: 20px 30px;
-    }
-    h2 {
-      color: #0077ff;
-    }
-    p {
-      font-size: 16px;
-      margin: 8px 0;
-    }
-  </style>
 </head>
 <body>
-  <div class="card">
-    <h2>🔑 Key hiện tại</h2>
-    <p><b>Key:</b> <span id="showKey">...</span></p>
-    <p><b>Thời gian hết hạn:</b> <span id="showExpire">...</span></p>
-    <p><b>Được tạo lúc:</b> <span id="showCreated">...</span></p>
-  </div>
-
   <script>
-    // 🧠 Dữ liệu mà app Sketchware Pro sẽ đọc
     window.KEY_DATA = {
-      key: "TUNGVN",             // 🔑 Key bạn muốn cấp
-      expire: 1760625900000,     // 🕒 Thời gian hết hạn (dạng milliseconds)
-      created: 1760625404370     // 🗓️ Thời gian tạo key
+      key: "TUNGAPI",
+      expire: 1760625900000
     };
-
-    // ✅ Hiển thị thông tin ra giao diện
-    const data = window.KEY_DATA;
-    document.getElementById("showKey").innerText = data.key;
-
-    function formatTime(ms) {
-      const d = new Date(ms);
-      return d.toLocaleString("vi-VN", { hour12: false });
-    }
-
-    document.getElementById("showExpire").innerText = formatTime(data.expire);
-    document.getElementById("showCreated").innerText = formatTime(data.created);
   </script>
+
+  <h2>🔑 Key hiện tại</h2>
+  <p>Key: TUNGAPI</p>
+  <p>Hết hạn: 16/10/2025, 21:45:00</p>
 </body>
 </html>
