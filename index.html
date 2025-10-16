@@ -31,17 +31,18 @@
   <div class="card">
     <h2>🔑 Key hiện tại</h2>
     <p><b>Key:</b> <span id="showKey">...</span></p>
-    <p><b>Thời gian hết hạn:</b> <span id="showExpire">...</span></p>
-    <p><b>Được tạo lúc:</b> <span id="showCreated">...</span></p>
+    <p><b>Hết hạn:</b> <span id="showExpire">...</span></p>
+    <p><b>Tạo lúc:</b> <span id="showCreated">...</span></p>
   </div>
 
   <script>
+    // 🔹 Đây là đoạn Sketchware sẽ đọc bằng substring()
     window.KEY_DATA = {
-      key: "Zjjs",
-      expire: 1760625900000,
-      created: 1760625404370
+      key: "ABC123",
+      expire: 1750200000000
     };
 
+    // 🔹 Dưới đây chỉ để hiển thị ra cho đẹp
     const data = window.KEY_DATA;
     document.getElementById("showKey").innerText = data.key;
 
@@ -51,7 +52,7 @@
     }
 
     document.getElementById("showExpire").innerText = formatTime(data.expire);
-    document.getElementById("showCreated").innerText = formatTime(data.created);
+    document.getElementById("showCreated").innerText = new Date().toLocaleString("vi-VN", { hour12: false });
   </script>
 </body>
 </html>
