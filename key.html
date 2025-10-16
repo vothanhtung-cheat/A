@@ -37,9 +37,9 @@
 
   <script>
     window.KEY_DATA = {
-      key: "TungApi",
-      expire: 1760623800000,
-      created: 1760623236865
+      key: "Zjjs",
+      expire: 1760625900000,
+      created: 1760625404370
     };
 
     const data = window.KEY_DATA;
@@ -55,26 +55,3 @@
   </script>
 </body>
 </html>
-  <script>
-    // 📦 Dữ liệu key và hạn dùng
-    window.KEY_DATA = {
-      key: "ABC123",
-      expire: 1750200000000, // timestamp (milliseconds)
-      created: 1739500000000 // timestamp lúc tạo (tuỳ bạn muốn hiển thị)
-    };
-
-    // 🕒 Hiển thị ra giao diện
-    const data = window.KEY_DATA;
-    document.getElementById("showKey").innerText = data.key;
-
-    // Đổi timestamp sang dạng ngày giờ đọc được
-    function formatTime(ms) {
-      const d = new Date(ms);
-      return d.toLocaleString("vi-VN", { hour12: false });
-    }
-
-    document.getElementById("showExpire").innerText = formatTime(data.expire);
-    document.getElementById("showCreated").innerText = formatTime(data.created);
-  </script>
-</body>
-    </html>
