@@ -3,10 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <title>Key Sketchware Pro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #eee;
+      text-align: center;
+      padding-top: 100px;
+    }
+    p {
+      font-size: 20px;
+      margin: 10px;
+    }
+    #status {
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <p id="key">KEYTUNG-20251017-123456</p>
-  <p id="expiry">2025-10-17 21:18:00</p>
-  <p id="status">❌ Hết hạn</p>
+  <p id="key">TUNGAPI-20251017-213000</p>
+  <p id="expiry">2025-10-17 21:30:00</p>
+  <p id="status">✅ Còn hạn</p>
+
+  <script>
+    // Lấy ngày hết hạn từ thẻ <p id="expiry">
+    const expiryText = document.getElementById("expiry").innerText.trim();
+    const expiryDate = new Date(expiryText); // Tạo đối tượng ngày hết hạn
+    const now = new Date(); // Lấy ngày giờ hiện tại
+
+    const statusEl = document.getElementById("status");
+
+    // So sánh thời gian
+    if (now.getTime() > expiryDate.getTime()) {
+      statusEl.innerText = "❌ Hết hạn";
+      statusEl.style.color = "#ff4444";
+    } else {
+      statusEl.innerText = "✅ Còn hạn";
+      statusEl.style.color = "#44ff44";
+    }
+
+    // Cập nhật tự động mỗi 1 phút (phòng khi để trang mở lâu)
+    setInterval(() => {
+      const nowUpdate = new Date();
+      if (nowUpdate.getTime() > expiryDate.getTime()) {
+        statusEl.innerText = "❌ Hết hạn";
+        statusEl.style.color = "#ff4444";
+      }
+    }, 60000);
+  </script>
 </body>
     </html>
