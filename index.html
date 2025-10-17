@@ -5,21 +5,13 @@
   <title>Key Sketchware Pro</title>
 </head>
 <body>
-  <p id="key">KEY-20251017-123456</p>
-  <p id="expiry">2025-10-25 06:06:00</p>
-  <p id="status">✅ Còn hạn</p>
-  <script>
-    function checkExpiry() {
-      const expiry = new Date(document.getElementById("expiry").textContent).getTime();
-      const now = new Date().getTime();
-      if (now >= expiry) {
-        document.getElementById("status").textContent = "❌ Hết hạn";
-      } else {
-        document.getElementById("status").textContent = "✅ Còn hạn";
-      }
-    }
-    checkExpiry();
-    setInterval(checkExpiry, 1000 * 60);
-  </script>
+  <p id="key">TUNGAPI-TEST</p>
+<p id="expiry">2025-10-25 23:59:59</p>
+<p id="status">✅ Còn hạn</p>
+<script>
+  const expiry = new Date(document.getElementById("expiry").textContent).getTime();
+  const now = new Date().getTime();
+  if (now >= expiry) document.getElementById("status").textContent = "❌ Hết hạn";
+</script>
 </body>
 </html>
