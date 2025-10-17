@@ -6,51 +6,52 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #111;
-      color: #eee;
+      background: #f4f4f4;
+      color: #333;
       text-align: center;
-      padding-top: 100px;
+      padding: 50px;
+    }
+    .box {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
     p {
-      font-size: 20px;
-      margin: 10px;
+      margin: 10px 0;
+      font-size: 18px;
     }
     #status {
-      font-size: 24px;
       font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <p id="key">TUNGAPI-20251017-213000</p>
-  <p id="expiry">2025-10-17 21:48:00</p>
-  <p id="status">✅ Còn hạn</p>
+  <div class="box">
+    <p id="key">KEY-20251017-123456</p>
+    <p id="expiry">2025-10-25 23:59:59</p>
+    <p id="status">⏳ Kiểm tra hạn...</p>
+  </div>
 
   <script>
-    // Lấy ngày hết hạn từ thẻ <p id="expiry">
-    const expiryText = document.getElementById("expiry").innerText.trim();
-    const expiryDate = new Date(expiryText); // Tạo đối tượng ngày hết hạn
-    const now = new Date(); // Lấy ngày giờ hiện tại
-
+    // Lấy phần tử HTML
+    const expiryEl = document.getElementById("expiry");
     const statusEl = document.getElementById("status");
 
-    // So sánh thời gian
-    if (now.getTime() > expiryDate.getTime()) {
-      statusEl.innerText = "❌ Hết hạn";
-      statusEl.style.color = "#ff4444";
-    } else {
-      statusEl.innerText = "✅ Còn hạn";
-      statusEl.style.color = "#44ff44";
-    }
+    // Lấy hạn sử dụng từ HTML
+    const expiryText = expiryEl.textContent.trim();
+    const expiryDate = new Date(expiryText);
+    const now = new Date();
 
-    // Cập nhật tự động mỗi 1 phút (phòng khi để trang mở lâu)
-    setInterval(() => {
-      const nowUpdate = new Date();
-      if (nowUpdate.getTime() > expiryDate.getTime()) {
-        statusEl.innerText = "❌ Hết hạn";
-        statusEl.style.color = "#ff4444";
-      }
-    }, 60000);
+    // So sánh thời gian hiện tại với thời gian hết hạn
+    if (now < expiryDate) {
+      statusEl.textContent = "✅ Còn hạn";
+      statusEl.style.color = "green";
+    } else {
+      statusEl.textContent = "❌ Hết hạn";
+      statusEl.style.color = "red";
+    }
   </script>
 </body>
-    </html>
+</html>
