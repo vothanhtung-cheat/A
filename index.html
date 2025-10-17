@@ -11,7 +11,7 @@
 </head>
 <body>
   <div class="card">
-    <p id="key">KEYHSH-20251017-123456</p>
+    <p id="key">KEYHStaH-20251017-123456</p>
     <p id="expiry">2025-10-25 23:59:59</p>
     <p id="status">Đang kiểm tra...</p>
   </div>
@@ -19,11 +19,11 @@
   <script>
     const expiry = new Date(document.getElementById("expiry").textContent).getTime();
     const now = new Date().getTime();
-    const statusEl = document.getElementById("status");
+    const status = document.getElementById("status");
     if (now < expiry) {
-      statusEl.textContent = "✅ Còn hạn";
+      status.textContent = "✅ Còn hạn";
     } else {
-      statusEl.textContent = "❌ Hết hạn";
+      status.textContent = "❌ Hết hạn";
     }
   </script>
 </body>
