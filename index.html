@@ -5,13 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Key Sketchware Pro</title>
   <style>
-    body {font-family: sans-serif; text-align: center; background: #f4f4f4; padding: 40px;}
-    .card {background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.2);}
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      background: #f4f4f4;
+      padding: 40px;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      display: inline-block;
+    }
+    #status {
+      font-weight: bold;
+      margin-top: 10px;
+    }
   </style>
 </head>
 <body>
   <div class="card">
-    <p id="key">KEYTT-20251017-123456</p>
+    <p id="key">KEYjio-20251017-123456</p>
     <p id="expiry">2025-10-25 23:59:59</p>
     <p id="status">Đang kiểm tra...</p>
   </div>
@@ -19,11 +34,10 @@
   <script>
     const expiry = new Date(document.getElementById("expiry").textContent).getTime();
     const now = new Date().getTime();
-    const statusEl = document.getElementById("status");
     if (now < expiry) {
-      statusEl.textContent = "✅ Còn hạn";
+      document.getElementById("status").textContent = "✅ Còn hạn";
     } else {
-      statusEl.textContent = "❌ Hết hạn";
+      document.getElementById("status").textContent = "❌ Hết hạn";
     }
   </script>
 </body>
