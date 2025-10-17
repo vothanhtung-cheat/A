@@ -3,60 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <title>Key Sketchware Pro</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      background: #f4f4f4;
-      padding: 40px;
-    }
-    .card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-      display: inline-block;
-    }
-    #status {
-      font-weight: bold;
-      margin-top: 10px;
-    }
-  </style>
 </head>
 <body>
-  <div class="card">
-    <!-- ⚙️ Key mà user phải nhập khớp 100% -->
-    <p id="key">KEY-20251017-123456</p>
-
-    <!-- 🕒 Ngày hết hạn -->
-    <p id="expiry">2025-10-25 23:59:59</p>
-
-    <!-- 🧭 Trạng thái sẽ tự đổi -->
-    <p id="status">Đang kiểm tra...</p>
-  </div>
-
+  <p id="key">KEY-20251017-123456</p>
+  <p id="expiry">2025-10-25 23:59:59</p>
+  <p id="status">✅ Còn hạn</p>
   <script>
     function checkExpiry() {
-      const expiryText = document.getElementById("expiry").textContent.trim();
-      const expiryTime = new Date(expiryText).getTime();
-      const now = Date.now();
-
-      const statusEl = document.getElementById("status");
-
-      if (isNaN(expiryTime)) {
-        statusEl.textContent = "❌ Hết hạn"; // fallback nếu không đọc được ngày
-        return;
-      }
-
-      if (now >= expiryTime) {
-        statusEl.textContent = "❌ Hết hạn";
+      const expiry = new Date(document.getElementById("expiry").textContent).getTime();
+      const now = new Date().getTime();
+      if (now >= expiry) {
+        document.getElementById("status").textContent = "❌ Hết hạn";
       } else {
-        statusEl.textContent = "✅ Còn hạn";
+        document.getElementById("status").textContent = "✅ Còn hạn";
       }
     }
-
-    checkExpiry(); // chạy ngay
-    setInterval(checkExpiry, 60 * 1000); // kiểm tra lại mỗi phút
+    checkExpiry();
+    setInterval(checkExpiry, 1000 * 60);
   </script>
 </body>
 </html>
