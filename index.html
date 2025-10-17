@@ -2,55 +2,46 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Key Sketchware Pro</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
-      color: #333;
+      font-family: sans-serif;
       text-align: center;
-      padding: 50px;
+      padding: 40px;
+      background: #f2f2f2;
     }
     .box {
-      background: #fff;
+      background: white;
       padding: 20px;
-      border-radius: 10px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
       display: inline-block;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    p {
-      margin: 10px 0;
-      font-size: 18px;
-    }
-    #status {
-      font-weight: bold;
-    }
+    p { margin: 10px 0; }
   </style>
 </head>
 <body>
   <div class="box">
     <p id="key">KEY-20251017-123456</p>
     <p id="expiry">2025-10-25 23:59:59</p>
-    <p id="status">⏳ Kiểm tra hạn...</p>
+    <p id="status">Đang kiểm tra...</p>
   </div>
 
   <script>
-    // Lấy phần tử HTML
+    // Lấy phần tử từ HTML
     const expiryEl = document.getElementById("expiry");
     const statusEl = document.getElementById("status");
 
-    // Lấy hạn sử dụng từ HTML
-    const expiryText = expiryEl.textContent.trim();
-    const expiryDate = new Date(expiryText);
-    const now = new Date();
+    // Đọc thời gian hết hạn từ thẻ
+    const expiryTime = new Date(expiryEl.textContent).getTime();
+    const now = new Date().getTime();
 
-    // So sánh thời gian hiện tại với thời gian hết hạn
-    if (now < expiryDate) {
+    // So sánh và cập nhật trạng thái
+    if (now < expiryTime) {
       statusEl.textContent = "✅ Còn hạn";
-      statusEl.style.color = "green";
     } else {
       statusEl.textContent = "❌ Hết hạn";
-      statusEl.style.color = "red";
     }
   </script>
 </body>
