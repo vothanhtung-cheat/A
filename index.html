@@ -3,11 +3,130 @@
 <head>
   <meta charset="UTF-8">
   <title>Key Sketchware Pro</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      transition: all 0.25s ease;
+    }
+
+    body {
+      font-family: "Fira Code", "Courier New", monospace;
+      background: radial-gradient(circle at center, #0a0f1e 0%, #000 100%);
+      color: #00ffcc;
+      text-align: center;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    /* Khung chính */
+    .terminal-frame {
+      background: rgba(10, 20, 30, 0.85);
+      border: 2px solid #00ffaa;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(0, 255, 170, 0.3),
+                  inset 0 0 20px rgba(0, 255, 170, 0.1);
+      padding: 30px 40px;
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+      backdrop-filter: blur(4px);
+      animation: fadeIn 0.8s ease;
+    }
+
+    /* Header */
+    .header {
+      font-size: 1.6rem;
+      margin-bottom: 25px;
+      color: #00ffaa;
+      text-shadow: 0 0 10px #00ffaa;
+      letter-spacing: 2px;
+    }
+
+    /* Các dòng dữ liệu */
+    p {
+      font-size: 1.1rem;
+      background: rgba(0, 255, 170, 0.07);
+      border: 1px solid rgba(0, 255, 170, 0.3);
+      border-radius: 10px;
+      padding: 10px 15px;
+      margin: 10px 0;
+      box-shadow: 0 0 10px rgba(0, 255, 170, 0.1);
+    }
+
+    #key {
+      color: #00e0ff;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-shadow: 0 0 6px #00e0ff;
+    }
+
+    #expiry {
+      color: #80ffea;
+      font-size: 0.95rem;
+    }
+
+    #status {
+      font-weight: bold;
+      font-size: 1.3rem;
+      border-radius: 8px;
+      padding: 12px 25px;
+      margin-top: 20px;
+      box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    #status:contains("✅") {
+      background: rgba(0, 255, 170, 0.1);
+      color: #00ffcc;
+      border: 1px solid #00ffaa;
+      text-shadow: 0 0 10px #00ffaa;
+    }
+
+    #status:contains("❌") {
+      background: rgba(255, 0, 100, 0.1);
+      color: #ff4d88;
+      border: 1px solid #ff4d88;
+      text-shadow: 0 0 8px #ff4d88;
+    }
+
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    /* Hiệu ứng nhấp nháy ở góc */
+    .cursor {
+      position: absolute;
+      bottom: 20px;
+      right: 30px;
+      color: #00ffaa;
+      font-weight: bold;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+  </style>
 </head>
 <body>
-  <p id="key">TungApi_CHECK</p>
-  <p id="expiry">2025-10-18 22:13:00</p>
-  <p id="status">✅ Còn hạn</p>
+  <div class="terminal-frame">
+    <div class="header">👩‍💻 KEY SKETCHWARE PRO</div>
+
+    <p id="key">Jkk</p>
+    <p id="expiry">2025-10-18 22:40:00</p>
+    <p id="status">✅ Còn hạn</p>
+  </div>
+
+  <div class="cursor">█</div>
+
   <script>
     const expiry = new Date(document.getElementById("expiry").textContent).getTime();
     const now = new Date().getTime();
