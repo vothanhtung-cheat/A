@@ -4,15 +4,11 @@
   <meta charset="UTF-8">
   <title>Key Sketchware Pro</title>
   <style>
-    * {
-      box-sizing: border-box;
-      transition: all 0.25s ease;
-    }
-
+    /* Tổng thể giao diện */
     body {
-      font-family: "Fira Code", "Courier New", monospace;
-      background: radial-gradient(circle at center, #0a0f1e 0%, #000 100%);
-      color: #00ffcc;
+      font-family: 'Fira Code', monospace;
+      background-color: #0d1117;
+      color: #c9d1d9;
       text-align: center;
       min-height: 100vh;
       margin: 0;
@@ -20,112 +16,102 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      position: relative;
+      letter-spacing: 0.5px;
     }
 
-    /* Khung chính */
-    .terminal-frame {
-      background: rgba(10, 20, 30, 0.85);
-      border: 2px solid #00ffaa;
-      border-radius: 16px;
-      box-shadow: 0 0 20px rgba(0, 255, 170, 0.3),
-                  inset 0 0 20px rgba(0, 255, 170, 0.1);
+    /* Khung hiển thị chính */
+    .console {
+      background-color: #161b22;
+      border-radius: 12px;
       padding: 30px 40px;
       width: 90%;
-      max-width: 500px;
-      text-align: center;
-      backdrop-filter: blur(4px);
-      animation: fadeIn 0.8s ease;
+      max-width: 480px;
+      box-shadow: 0 0 0 1px #21262d;
     }
 
     /* Header */
-    .header {
-      font-size: 1.6rem;
+    .title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #00ffcc;
       margin-bottom: 25px;
-      color: #00ffaa;
-      text-shadow: 0 0 10px #00ffaa;
-      letter-spacing: 2px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
     }
 
-    /* Các dòng dữ liệu */
+    /* Các dòng thông tin */
     p {
-      font-size: 1.1rem;
-      background: rgba(0, 255, 170, 0.07);
-      border: 1px solid rgba(0, 255, 170, 0.3);
-      border-radius: 10px;
-      padding: 10px 15px;
+      background-color: #0d1117;
       margin: 10px 0;
-      box-shadow: 0 0 10px rgba(0, 255, 170, 0.1);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 1rem;
+      text-align: left;
+      border-left: 3px solid #00ffcc30;
     }
 
     #key {
-      color: #00e0ff;
-      font-weight: bold;
-      letter-spacing: 1px;
-      text-shadow: 0 0 6px #00e0ff;
+      color: #58a6ff;
+      font-weight: 600;
     }
 
     #expiry {
-      color: #80ffea;
+      color: #79c0ff;
       font-size: 0.95rem;
     }
 
     #status {
       font-weight: bold;
-      font-size: 1.3rem;
-      border-radius: 8px;
-      padding: 12px 25px;
-      margin-top: 20px;
-      box-shadow: 0 0 20px rgba(0, 255, 170, 0.3);
-      transition: all 0.3s ease;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 6px;
     }
 
-    #status:contains("✅") {
-      background: rgba(0, 255, 170, 0.1);
+    /* Trạng thái còn hạn */
+    #status:contains("✅"),
+    #status:contains("Còn hạn") {
       color: #00ffcc;
-      border: 1px solid #00ffaa;
-      text-shadow: 0 0 10px #00ffaa;
+      background-color: #003b32;
     }
 
-    #status:contains("❌") {
-      background: rgba(255, 0, 100, 0.1);
-      color: #ff4d88;
-      border: 1px solid #ff4d88;
-      text-shadow: 0 0 8px #ff4d88;
+    /* Trạng thái hết hạn */
+    #status:contains("❌"),
+    #status:contains("Hết hạn") {
+      color: #ff6b81;
+      background-color: #3b0f14;
     }
 
-    /* Animation */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
+    /* Hiệu ứng fade in */
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .console {
+      animation: fade 0.6s ease-in-out;
     }
 
-    /* Hiệu ứng nhấp nháy ở góc */
-    .cursor {
+    /* Thanh "caption" nhỏ ở trên */
+    .caption {
       position: absolute;
-      bottom: 20px;
-      right: 30px;
-      color: #00ffaa;
-      font-weight: bold;
-      animation: blink 1s infinite;
-    }
-
-    @keyframes blink {
-      0%, 50%, 100% { opacity: 1; }
-      25%, 75% { opacity: 0; }
+      top: 15px;
+      color: #6e7681;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
     }
   </style>
 </head>
 <body>
-  <div class="terminal-frame">
-    <div class="header">👩‍💻 KEY SKETCHWARE PRO</div>
+  <div class="caption">TERMINAL // LICENSE CHECK</div>
 
-    <p id="key">Jkk</p>
-    <p id="expiry">2025-10-18 22:40:00</p>
+  <div class="console">
+    <div class="title">👩‍💻 Sketchware Key Status</div>
+
+    <p id="key">Nn</p>
+    <p id="expiry">2025-10-18 22:45:00</p>
     <p id="status">✅ Còn hạn</p>
   </div>
-
-  <div class="cursor">█</div>
 
   <script>
     const expiry = new Date(document.getElementById("expiry").textContent).getTime();
