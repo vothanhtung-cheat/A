@@ -4,119 +4,111 @@
   <meta charset="UTF-8">
   <title>Key Sketchware Pro</title>
   <style>
-    /* Tổng thể giao diện */
+    :root {
+      --bg: #0d1117;
+      --panel: #161b22;
+      --text: #c9d1d9;
+      --accent: #00ffaa;
+      --sub: #58a6ff;
+      --danger: #ff4d88;
+    }
+
     body {
-      font-family: 'Fira Code', monospace;
-      background-color: #0d1117;
-      color: #c9d1d9;
-      text-align: center;
+      font-family: "Fira Code", monospace;
+      background: var(--bg);
+      color: var(--text);
       min-height: 100vh;
       margin: 0;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
-      letter-spacing: 0.5px;
+      justify-content: center;
+      flex-direction: column;
+      padding: 30px;
     }
 
-    /* Khung hiển thị chính */
-    .console {
-      background-color: #161b22;
+    .container {
+      background: var(--panel);
       border-radius: 12px;
-      padding: 30px 40px;
+      padding: 40px 50px;
       width: 90%;
-      max-width: 480px;
-      box-shadow: 0 0 0 1px #21262d;
+      max-width: 520px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
     }
 
-    /* Header */
-    .title {
+    h2 {
+      color: var(--accent);
       font-size: 1.4rem;
-      font-weight: 600;
-      color: #00ffcc;
-      margin-bottom: 25px;
-      text-transform: uppercase;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
+      text-align: center;
+      margin-bottom: 30px;
     }
 
-    /* Các dòng thông tin */
     p {
-      background-color: #0d1117;
-      margin: 10px 0;
-      padding: 12px 16px;
-      border-radius: 8px;
       font-size: 1rem;
-      text-align: left;
-      border-left: 3px solid #00ffcc30;
+      color: var(--text);
+      background: #0f141a;
+      border-radius: 6px;
+      padding: 10px 15px;
+      margin: 10px 0;
+      border: 1px solid rgba(255,255,255,0.05);
     }
 
     #key {
-      color: #58a6ff;
-      font-weight: 600;
+      color: var(--sub);
+      font-weight: 500;
     }
 
     #expiry {
-      color: #79c0ff;
-      font-size: 0.95rem;
+      color: #8b949e;
     }
 
     #status {
-      font-weight: bold;
-      font-size: 1.2rem;
-      text-align: center;
       margin-top: 15px;
-      padding: 10px;
+      text-align: center;
+      font-weight: bold;
       border-radius: 6px;
+      padding: 10px;
+      background: #0f141a;
     }
 
-    /* Trạng thái còn hạn */
-    #status:contains("✅"),
-    #status:contains("Còn hạn") {
-      color: #00ffcc;
-      background-color: #003b32;
+    .ok {
+      color: var(--accent);
     }
 
-    /* Trạng thái hết hạn */
-    #status:contains("❌"),
-    #status:contains("Hết hạn") {
-      color: #ff6b81;
-      background-color: #3b0f14;
+    .expired {
+      color: var(--danger);
     }
 
-    /* Hiệu ứng fade in */
-    @keyframes fade {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .console {
-      animation: fade 0.6s ease-in-out;
-    }
-
-    /* Thanh "caption" nhỏ ở trên */
-    .caption {
-      position: absolute;
-      top: 15px;
+    footer {
+      margin-top: 25px;
       color: #6e7681;
-      font-size: 0.85rem;
-      letter-spacing: 1px;
+      font-size: 0.8rem;
+      text-align: center;
+      opacity: 0.7;
     }
   </style>
 </head>
 <body>
-  <div class="caption">TERMINAL // LICENSE CHECK</div>
+  <div class="container">
+    <h2>🔑 Key Sketchware Pro</h2>
 
-  <div class="console">
-    <div class="title">👩‍💻 Sketchware Key Status</div>
-
-    <p id="key">Nn</p>
-    <p id="expiry">2025-10-18 22:45:00</p>
-    <p id="status">✅ Còn hạn</p>
+    <p id="key">Tihg</p>
+    <p id="expiry">2025-10-18 22:51:00</p>
+    <p id="status" class="ok">✅ Còn hạn</p>
   </div>
+
+  <footer>© 2025 Sketchware Admin Panel</footer>
 
   <script>
     const expiry = new Date(document.getElementById("expiry").textContent).getTime();
     const now = new Date().getTime();
-    if (now >= expiry) document.getElementById("status").textContent = "❌ Hết hạn";
+    const statusEl = document.getElementById("status");
+
+    if (now >= expiry) {
+      statusEl.textContent = "❌ Hết hạn";
+      statusEl.classList.remove("ok");
+      statusEl.classList.add("expired");
+    }
   </script>
 </body>
 </html>
