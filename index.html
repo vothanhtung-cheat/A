@@ -7,6 +7,7 @@
     :root {
       --bg: #0d1117;
       --panel: #161b22;
+      --header: #0b0f14;
       --text: #c9d1d9;
       --accent: #00ffaa;
       --sub: #58a6ff;
@@ -23,18 +24,54 @@
       align-items: center;
       justify-content: center;
       flex-direction: column;
-      padding: 40px;
+      padding: 0;
     }
 
-    .container {
+    .frame {
       background: var(--panel);
-      border-radius: 16px;
-      padding: 60px 70px;
-      width: 90%;
-      max-width: 800px;
-      box-shadow: 0 0 0 1px rgba(255,255,255,0.05);
-      text-align: center;
+      border-radius: 18px;
+      width: 92%;
+      max-width: 860px;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0, 255, 170, 0.1);
+      border: 1px solid rgba(255,255,255,0.06);
       animation: fadeIn 0.8s ease-out;
+    }
+
+    .header {
+      background: var(--header);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 25px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .header .title {
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+    }
+
+    .header .dots {
+      display: flex;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .red { background: #ff5f56; }
+    .yellow { background: #ffbd2e; }
+    .green { background: #27c93f; }
+
+    .container {
+      padding: 60px 70px;
+      text-align: center;
     }
 
     h2 {
@@ -85,50 +122,47 @@
     }
 
     footer {
-      margin-top: 40px;
+      margin-top: 25px;
       color: #6e7681;
-      font-size: 1rem;
+      font-size: 0.95rem;
       text-align: center;
+      padding-bottom: 25px;
       opacity: 0.8;
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.97);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    @media (max-width: 600px) {
-      .container {
-        padding: 40px 25px;
-      }
-      h2 {
-        font-size: 1.6rem;
-      }
-      p {
-        font-size: 1.2rem;
-      }
-      #key {
-        font-size: 1.3rem;
-      }
+    @media (max-width: 650px) {
+      .container { padding: 40px 25px; }
+      h2 { font-size: 1.6rem; }
+      p { font-size: 1.2rem; }
+      #key { font-size: 1.3rem; }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>🔑 Key Sketchware Pro</h2>
+  <div class="frame">
+    <div class="header">
+      <div class="dots">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+      </div>
+      <div class="title">🔐 Sketchware Key Viewer</div>
+    </div>
 
-    <p id="key">TungVNG</p>
-    <p id="expiry">2025-10-18 23:00:00</p>
-    <p id="status" class="ok">✅ Còn hạn</p>
+    <div class="container">
+      <h2>🔑 Key Sketchware Pro</h2>
+      <p id="key">Uk</p>
+      <p id="expiry">2025-10-19 07:31:00</p>
+      <p id="status" class="ok">✅ Còn hạn</p>
+    </div>
+
+    <footer>© 2025 Sketchware Pro | Admin System</footer>
   </div>
-
-  <footer>© 2025 Sketchware Pro | Admin System</footer>
 
   <script>
     const expiry = new Date(document.getElementById("expiry").textContent).getTime();
