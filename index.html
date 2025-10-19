@@ -4,58 +4,38 @@
   <meta charset="UTF-8">
   <title>Key Sketchware Pro</title>
   <style>
-    /* 💫 Toàn bộ nền */
+    /* 🌙 Nền tổng thể */
     body {
       margin: 0;
       padding: 0;
-      font-family: 'JetBrains Mono', 'Courier New', monospace;
-      background: radial-gradient(circle at top left, #05010f, #000);
-      color: #0fffc1;
-      overflow-x: hidden;
+      font-family: sans-serif;
+      background: linear-gradient(135deg, #030614, #050a1f 60%, #0a1028);
+      color: #00ffc8;
     }
 
-    /* ✨ Hiệu ứng nền chuyển động nhẹ neon */
-    body::before {
-      content: "";
-      position: fixed;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: conic-gradient(from 180deg at 50% 50%, #00e6ff, #00ff9d, #ff00ff, #00e6ff);
-      animation: rotate 10s linear infinite;
-      opacity: 0.08;
-      z-index: 0;
-    }
-
-    @keyframes rotate {
-      to { transform: rotate(360deg); }
-    }
-
-    /* 🌙 Terminal container */
+    /* 💎 Khung chính (to, neon glow, giữa trang) */
     .terminal {
       position: relative;
-      z-index: 2;
-      max-width: 800px;
-      margin: 50px auto;
-      padding: 30px 40px;
-      background: rgba(10, 15, 25, 0.85);
-      border: 1px solid rgba(0, 255, 157, 0.5);
-      border-radius: 15px;
+      z-index: 1;
+      max-width: 90%;
+      width: 1000px;
+      margin: 60px auto;
+      padding: 40px;
+      background: rgba(10, 15, 25, 0.92);
+      border: 2px solid #00ffc8;
+      border-radius: 18px;
       box-shadow:
-        0 0 20px rgba(0, 255, 157, 0.5),
-        inset 0 0 25px rgba(0, 255, 255, 0.15);
+        0 0 25px rgba(0, 255, 200, 0.4),
+        inset 0 0 25px rgba(0, 255, 200, 0.1);
       backdrop-filter: blur(10px);
-      text-align: left;
     }
 
-    /* 🟢 Header */
-    .terminal-header {
+    /* ✴️ Header kiểu terminal */
+    .header {
       display: flex;
       align-items: center;
       margin-bottom: 20px;
     }
-
     .dot {
       width: 14px;
       height: 14px;
@@ -66,71 +46,72 @@
     .dot.yellow { background: #ffd93d; box-shadow: 0 0 6px #ffd93d; }
     .dot.green { background: #00ff9d; box-shadow: 0 0 6px #00ff9d; }
 
-    .terminal-header span {
-      color: #00ff9d;
-      font-weight: bold;
+    .header span {
+      color: #00ffc8;
       margin-left: auto;
-      opacity: 0.6;
-      font-size: 14px;
+      opacity: 0.7;
+      font-size: 15px;
     }
 
-    /* 🧠 Nội dung text */
+    /* 💬 Nội dung key */
     p {
-      font-size: 18px;
-      color: #0fffc1;
-      margin: 10px 0;
+      font-size: 22px;
+      color: #00ffc8;
+      margin: 15px 0;
+      text-shadow: 0 0 10px rgba(0, 255, 200, 0.6);
       word-break: break-all;
-      text-shadow: 0 0 10px rgba(0, 255, 157, 0.6);
     }
 
     #status {
       font-weight: bold;
+      font-size: 24px;
       text-shadow: 0 0 15px #00ff9d;
-      animation: pulse 2s infinite;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
-    }
-
-    /* 🔴 Khi hết hạn */
+    /* 🔴 Khi hết hạn: chuyển sang đỏ neon */
     #status:contains("❌"),
     #status:has-text("❌") {
-      color: #ff4d4d !important;
-      text-shadow: 0 0 12px #ff4d4d;
+      color: #ff4d4d;
+      text-shadow: 0 0 15px #ff4d4d;
     }
 
-    /* 💡 Dòng chấm nhấp nháy */
-    .cursor::after {
-      content: "_";
-      animation: blink 1s infinite;
+    /* ⚡ Hiệu ứng nền nhẹ */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 180deg, #00ff9d, #00b3ff, #ff00ff, #00ff9d);
+      animation: spin 10s linear infinite;
+      opacity: 0.05;
+      z-index: 0;
     }
-    @keyframes blink { 50% { opacity: 0; } }
 
-    /* 📜 Footer */
+    @keyframes spin { to { transform: rotate(360deg); } }
+
     footer {
       text-align: center;
-      color: #00ff9d;
+      color: #00ffc8;
       opacity: 0.6;
-      font-size: 14px;
-      margin-top: 30px;
-      text-shadow: 0 0 8px #00ff9d;
+      margin: 30px 0;
+      font-size: 15px;
     }
   </style>
 </head>
 
 <body>
   <div class="terminal">
-    <div class="terminal-header">
+    <div class="header">
       <div class="dot red"></div>
       <div class="dot yellow"></div>
       <div class="dot green"></div>
-      <span>sketware-pro-key.html</span>
+      <span>key.html — Sketchware Pro</span>
     </div>
 
-    <p id="key">Gk</p>
-    <p id="expiry">2025-10-19 07:56:00</p>
+    <p id="key">Zkkx</p>
+    <p id="expiry">2025-10-19 08:00:00</p>
     <p id="status">✅ Còn hạn</p>
 
     <script>
@@ -140,6 +121,6 @@
     </script>
   </div>
 
-  <footer>⚡ Sketchware Pro Key System © 2025 — Dark Neon UI</footer>
+  <footer>© 2025 Sketchware Pro Key System — Dark Neon Interface</footer>
 </body>
 </html>
